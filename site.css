@@ -671,8 +671,11 @@ footer {
         -webkit-align-items: center;
         -ms-flex-align: center;
         align-items: center;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
         > div {
-            width: 33.33%;
+            min-width: 30%;
         }
     }
     a:hover {
