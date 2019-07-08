@@ -10,9 +10,9 @@
                     <p class="footer_heading">NEWSLETTER SUBSCRIPTION</p>
                     <p>Stay up to date on the latest news from {{ property.name }}!</p>
                     <form id="subForm" class="js-cm-form" action="https://www.createsend.com/t/subscribeerror?description=" method="post" data-id="92D4C54F0FEC16E5ADC2B1904DE9ED1AF4735E8FA53218D7E86C6C991DC4BE6C9C070C06B9FF8DED953EB9A6E582D28EDDA0615C95B0E5EF7CB280BEF5CB6353">	
-                        <label for="fieldEmail">Email</label>
-                        <input id="fieldEmail" name="cm-ydiuhjy-ydiuhjy" type="email" class="js-cm-email-input" required />
-                        <button class="js-cm-submit-button" type="submit">Subscribe</button>
+                        <label class="accessibility" for="fieldEmail">Email</label>
+                        <input id="fieldEmail" name="cm-ydiuhjy-ydiuhjy" type="email" class="js-cm-email-input"  placeholder="Your Email" required />
+                        <button id="newsletter_submit" class="js-cm-submit-button" type="submit">Subscribe To Our Newsletter</button>
                     </form>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4">
@@ -54,12 +54,8 @@
             data: function data() {
                 return {
                     dataLoaded: false,
-                    siteInfo: site,
-                    newsletter_email: ""
+                    siteInfo: site
                 }
-            },
-            mounted () {
-                window.MktoForms2.loadForm("//app-sj03.marketo.com", "561-LJY-710", 3294);
             },
             created () {
                 this.dataLoaded = true;
@@ -67,21 +63,13 @@
             computed: {
                 ...Vuex.mapGetters([
                     'property',
-                    'timezone',
-                    'findRepoByName'
+                    'timezone'
                 ]),
                 copyright_year() {
                     return moment().year();
                 },
                 getPropertyAddress() {
                     return this.property.address1 + ' ' + this.property.city + ' ' + this.property.country + ' ' + this.property.province_state
-                }
-            },
-            methods: {
-                newsletterRoute() {
-                    this.show_menu = false;
-                    this.$router.push("/newsletter?email=" + this.newsletter_email);
-                    this.newsletter_email = "";
                 }
             }
         });
